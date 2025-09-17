@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
+VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolManagement.API", "SchoolManagement\SchoolManagement.API.csproj", "{7A8E03BB-509F-4077-9E7A-E35FE86EF14D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolManagement.Core", "SchoolManagement.Core\SchoolManagement.Core.csproj", "{D6587747-D55A-4A61-9002-FC7EF9C1A26B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolManagement.Service", "SchoolManagement.Service\SchoolManagement.Service.csproj", "{E4438556-0ACD-4209-A715-EB15F17B0E37}"
@@ -13,16 +11,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolManagement.Infrastruc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolManagement.Data", "SchoolManagement.Data\SchoolManagement.Data.csproj", "{EEBE622D-D619-4457-964D-7736121993A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolManagement.API", "SchoolManagement.API\SchoolManagement.API.csproj", "{A9A0CB81-264B-5E05-0C45-5A67043AAF6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7A8E03BB-509F-4077-9E7A-E35FE86EF14D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A8E03BB-509F-4077-9E7A-E35FE86EF14D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7A8E03BB-509F-4077-9E7A-E35FE86EF14D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A8E03BB-509F-4077-9E7A-E35FE86EF14D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D6587747-D55A-4A61-9002-FC7EF9C1A26B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D6587747-D55A-4A61-9002-FC7EF9C1A26B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6587747-D55A-4A61-9002-FC7EF9C1A26B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{EEBE622D-D619-4457-964D-7736121993A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEBE622D-D619-4457-964D-7736121993A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEBE622D-D619-4457-964D-7736121993A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9A0CB81-264B-5E05-0C45-5A67043AAF6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9A0CB81-264B-5E05-0C45-5A67043AAF6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9A0CB81-264B-5E05-0C45-5A67043AAF6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9A0CB81-264B-5E05-0C45-5A67043AAF6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
