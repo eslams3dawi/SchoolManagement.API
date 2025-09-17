@@ -6,9 +6,7 @@ using SchoolManagement.Core.Features.Students.Queries.Models;
 using SchoolManagement.Core.Features.Students.Queries.Response;
 using SchoolManagement.Core.Resources;
 using SchoolManagement.Core.Wrappers;
-using SchoolManagement.Data.Entities;
 using SchoolManagement.Service.Interfaces;
-using System.Linq.Expressions;
 
 namespace SchoolManagement.Core.Features.Students.Queries.Handlers
 {
@@ -56,16 +54,20 @@ namespace SchoolManagement.Core.Features.Students.Queries.Handlers
         public async Task<PaginatedResult<GetStudentPaginatedListResponse>> Handle(GetStudentPaginatedListQuery request, CancellationToken cancellationToken)
         {
             var filter = _studentService.FilterStudentsPaginatedQueryable(request.OrderBy, request.Search);
-            Expression<Func<Student, GetStudentPaginatedListResponse>> expression =
-                                            e => new GetStudentPaginatedListResponse(e.StudentId,
-                                                                                     e.Localize(e.FirstNameAr, e.FirstNameEn),
-                                                                                     e.Localize(e.LastNameAr, e.LastNameEn),
-                                                                                     e.Localize(e.AddressAr, e.AddressEn),
-                                                                                     e.Phone,
-                                                                                     e.Localize(e.Department.NameAr, e.Department.NameEn));
-            var paginatedList = await filter
-                .Select(expression)
-                .ToPaginatedListAsync(request.PageNumber, request.PageSize);
+            //First Way:
+            //Expression<Func<Student, GetStudentPaginatedListResponse>> expression = e => new GetStudentPaginatedListResponse(e.StudentId,e.Localize(e.FirstNameAr, e.FirstNameEn), e.Localize(e.LastNameAr, e.LastNameEn), e.Localize(e.AddressAr, e.AddressEn), e.Phone, e.Localize(e.Department.NameAr, e.Department.NameEn));
+            //var paginatedList = await filter.Select(expression).ToPaginatedListAsync(request.PageNumber, request.PageSize);
+
+            //Second Way:
+            //var paginatedList = await filter
+            //    .Select(x => new GetStudentPaginatedListResponse()
+            //    { StudentId = x.StudentId, FirstName = x.Localize(x.FirstNameAr, x.FirstNameEn), LastName = x.Localize(x.LastNameAr, x.LastNameEn), Address = x.Localize(x.AddressAr, x.AddressEn), Phone = x.Phone, DepartmentName = x.Localize(x.Department.NameAr, x.Department.NameEn) })
+            //                    .ToPaginatedListAsync(request.PageNumber, request.PageSize);
+
+            //Third Way:
+            var paginatedList = await _mapper.ProjectTo<GetStudentPaginatedListResponse>(filter)
+                                .ToPaginatedListAsync(request.PageNumber, request.PageSize);
+
 
             paginatedList.Meta = new
             {

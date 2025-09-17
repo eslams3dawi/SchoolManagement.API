@@ -21,5 +21,6 @@
         public const string LastName = "LastName";
         public const string Address = "Address";
         public const string Phone = "Phone";
+        public const string DepartmentId = "DepartmentId";
     }
 }

@@ -9,11 +9,13 @@ namespace SchoolManagement.Core.Features.Students.Commands.Validators
     public class AddStudentValidator : AbstractValidator<AddStudentCommand>
     {
         private readonly IStudentService _studentService;
+        private readonly IDepartmentService _departmentService;
         private readonly IStringLocalizer<SharedResources> _stringLocalizer;
 
-        public AddStudentValidator(IStudentService studentService, IStringLocalizer<SharedResources> stringLocalizer)
+        public AddStudentValidator(IStudentService studentService, IDepartmentService departmentService, IStringLocalizer<SharedResources> stringLocalizer)
         {
             _studentService = studentService;
+            _departmentService = departmentService;
             _stringLocalizer = stringLocalizer;
             ApplyValidationRules();
             ApplyCustomValidation();
@@ -69,6 +71,10 @@ namespace SchoolManagement.Core.Features.Students.Commands.Validators
             RuleFor(x => x.Phone)
                 .MustAsync(async (Key, CancellationToken) => !await _studentService.IsPhoneExists(Key))
                 .WithMessage(_stringLocalizer[SharedResourcesKeys.PhoneExists]);
+
+            RuleFor(x => x.DepartmentId)
+                .MustAsync(async (Key, CancellationToken) => await _departmentService.IsDepartmentIdExists(Key))
+                .WithMessage(_stringLocalizer[SharedResourcesKeys.NotFound]);
         }
     }
 }

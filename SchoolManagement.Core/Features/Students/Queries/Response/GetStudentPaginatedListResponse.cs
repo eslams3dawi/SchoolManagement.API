@@ -9,14 +9,18 @@
         public string Phone { get; set; }
         public string DepartmentName { get; set; }
 
-        public GetStudentPaginatedListResponse(int studentId, string firstName, string lastName, string address, string phone, string departmentName)
-        {
-            StudentId = studentId;
-            FirstName = firstName;
-            LastName = lastName;
-            Address = address;
-            Phone = phone;
-            DepartmentName = departmentName;
-        }
+        //For first way in StudentQueryHandler
+        public GetStudentPaginatedListResponse() { }
+
+        //For first way in StudentQueryHandler
+        //public GetStudentPaginatedListResponse(int studentId, string firstName, string lastName, string address, string phone, string departmentName)
+        //{
+        //    StudentId = studentId;
+        //    FirstName = firstName;
+        //    LastName = lastName;
+        //    Address = address;
+        //    Phone = phone;
+        //    DepartmentName = departmentName;
+        //}
     }
 }
