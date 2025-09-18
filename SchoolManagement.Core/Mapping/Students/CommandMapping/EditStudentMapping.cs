@@ -7,7 +7,7 @@ namespace SchoolManagement.Core.Mapping.Students
     {
         public void EditStudentMapping()
         {
-            CreateMap<EditStudentCommand, Student>()
+            CreateMap<UpdateStudentCommand, Student>()
              .ForMember(dest => dest.FirstNameEn, opts => opts.MapFrom(src => src.FirstNameEn))
              .ForMember(dest => dest.FirstNameAr, opts => opts.MapFrom(src => src.FirstNameAr))
              .ForMember(dest => dest.LastNameEn, opts => opts.MapFrom(src => src.LastNameEn))

@@ -11,7 +11,7 @@ namespace SchoolManagement.Core.Features.Students.Commands.Handlers
 {
     public class StudentCommandHandler : ResponseHandler,
                                          IRequestHandler<AddStudentCommand, Response<string>>,
-                                         IRequestHandler<EditStudentCommand, Response<string>>,
+                                         IRequestHandler<UpdateStudentCommand, Response<string>>,
                                          IRequestHandler<DeleteStudentCommand, Response<string>>
     {
         private readonly IStudentService _studentService;
@@ -39,7 +39,7 @@ namespace SchoolManagement.Core.Features.Students.Commands.Handlers
             return response;
         }
 
-        public async Task<Response<string>> Handle(EditStudentCommand request, CancellationToken cancellationToken)
+        public async Task<Response<string>> Handle(UpdateStudentCommand request, CancellationToken cancellationToken)
         {
             var student = await _studentService.GetStudentByIdAsync(request.StudentId);
 

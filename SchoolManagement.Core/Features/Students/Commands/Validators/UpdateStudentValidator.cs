@@ -6,12 +6,12 @@ using SchoolManagement.Service.Interfaces;
 
 namespace SchoolManagement.Core.Features.Students.Commands.Validators
 {
-    public class EditStudentValidator : AbstractValidator<EditStudentCommand>
+    public class UpdateStudentValidator : AbstractValidator<UpdateStudentCommand>
     {
         private readonly IStudentService _studentService;
         private readonly IStringLocalizer<SharedResources> _stringLocalizer;
 
-        public EditStudentValidator(IStudentService studentService, IStringLocalizer<SharedResources> stringLocalizer)
+        public UpdateStudentValidator(IStudentService studentService, IStringLocalizer<SharedResources> stringLocalizer)
         {
             _studentService = studentService;
             _stringLocalizer = stringLocalizer;
