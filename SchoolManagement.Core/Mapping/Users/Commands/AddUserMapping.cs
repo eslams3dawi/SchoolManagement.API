@@ -5,7 +5,7 @@ namespace SchoolManagement.Core.Mapping.Users
 {
     public partial class UserProfile
     {
-        public void AddStudentMapping()
+        public void AddUserMapping()
         {
             CreateMap<AddUserCommand, ApplicationUser>()
                 .ForMember(dest => dest.PasswordHash, opt => opt.MapFrom(src => src.Password));
