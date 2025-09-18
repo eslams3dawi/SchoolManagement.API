@@ -22,5 +22,10 @@
         public const string Address = "Address";
         public const string Phone = "Phone";
         public const string DepartmentId = "DepartmentId";
+        public const string NotValid = "NotValid";
+        public const string PasswordsNotMatch = "PasswordsNotMatch";
+        public const string EmailExists = "EmailExists";
+        public const string UsernameExists = "UsernameExists";
+        public const string FailedWhenAddingUser = "FailedWhenAddingUser";
     }
 }

@@ -174,4 +174,19 @@
   <data name="DepartmentId" xml:space="preserve">
     <value>رقم القسم</value>
   </data>
+  <data name="NotValid" xml:space="preserve">
+    <value>غير صالح</value>
+  </data>
+  <data name="PasswordsNotMatche" xml:space="preserve">
+    <value>كلمة المرور وتأكيد كلمة المرور غير متطابقتين</value>
+  </data>
+  <data name="UsernameExists" xml:space="preserve">
+    <value>المستخدم موجود بالفعل</value>
+  </data>
+  <data name="EmailExists" xml:space="preserve">
+    <value>البريد الألكتروني موجود بالفعل</value>
+  </data>
+  <data name="FailedWhenAddingUser" xml:space="preserve">
+    <value>Failed When Adding User</value>
+  </data>
 </root>
