@@ -1,10 +1,8 @@
 using Microsoft.AspNetCore.Localization;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using SchoolManagement.Core;
 using SchoolManagement.Core.Middleware;
 using SchoolManagement.Infrastructure;
-using SchoolManagement.Infrastructure.Database;
 using SchoolManagement.Service;
 using System.Globalization;
 
@@ -26,14 +24,10 @@ namespace SchoolManagement
             builder.Services.AddSwaggerGen();
 
             #region Dependency Injection
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
-            {
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-            });
-
             builder.Services.AddInfrastructureDependencies()
                             .AddServiceDependencies()
-                            .AddCoreDependencies();
+                            .AddCoreDependencies()
+                            .AddServiceRegistration(builder.Configuration);
             #endregion
 
             #region Localization
