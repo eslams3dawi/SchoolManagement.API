@@ -5,11 +5,11 @@ using SchoolManagement.Core.Resources;
 
 namespace SchoolManagement.Core.Features.User.Commands.Validators
 {
-    public class AddUserValidator : AbstractValidator<AddUserCommand>
+    public class UpdateUserValidator : AbstractValidator<UpdateUserCommand>
     {
         private readonly IStringLocalizer<SharedResources> _stringLocalizer;
 
-        public AddUserValidator(IStringLocalizer<SharedResources> stringLocalizer)
+        public UpdateUserValidator(IStringLocalizer<SharedResources> stringLocalizer)
         {
             _stringLocalizer = stringLocalizer;
             ApplyValidationRules();
@@ -26,20 +26,6 @@ namespace SchoolManagement.Core.Features.User.Commands.Validators
                 .NotEmpty().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty])
                 .NotNull().WithMessage(_stringLocalizer[SharedResourcesKeys.NotNull])
                 .MaximumLength(75).WithMessage(_stringLocalizer[SharedResourcesKeys.ExceededMaxLength]);
-            RuleFor(x => x.Email)
-                .NotEmpty().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty])
-                .NotNull().WithMessage(_stringLocalizer[SharedResourcesKeys.NotNull])
-                .EmailAddress().WithMessage(_stringLocalizer[SharedResourcesKeys.NotValid]);
-            RuleFor(x => x.Password)
-                .NotEmpty().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty])
-                .MinimumLength(8).WithMessage(_stringLocalizer[SharedResourcesKeys.LessThanMinLength]);
-            RuleFor(x => x.ConfirmPassword)
-                .Equal(x => x.Password).WithMessage(_stringLocalizer[SharedResourcesKeys.PasswordsNotMatch]);
-            RuleFor(x => x.PhoneNumber)
-                .NotEmpty().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty])
-                .NotNull().WithMessage(_stringLocalizer[SharedResourcesKeys.NotNull])
-                .MinimumLength(11).WithMessage(_stringLocalizer[SharedResourcesKeys.LessThanMinLength])
-                .MaximumLength(15).WithMessage(_stringLocalizer[SharedResourcesKeys.ExceededMaxLength]);
             RuleFor(x => x.Address)
                 .NotEmpty().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty])
                 .NotNull().WithMessage(_stringLocalizer[SharedResourcesKeys.NotNull])
@@ -48,6 +34,11 @@ namespace SchoolManagement.Core.Features.User.Commands.Validators
                 .NotEmpty().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty])
                 .NotNull().WithMessage(_stringLocalizer[SharedResourcesKeys.NotNull])
                 .MaximumLength(100).WithMessage(_stringLocalizer[SharedResourcesKeys.ExceededMaxLength]);
+            RuleFor(x => x.PhoneNumber)
+                .NotEmpty().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty])
+                .NotNull().WithMessage(_stringLocalizer[SharedResourcesKeys.NotNull])
+                .MinimumLength(11).WithMessage(_stringLocalizer[SharedResourcesKeys.LessThanMinLength])
+                .MaximumLength(15).WithMessage(_stringLocalizer[SharedResourcesKeys.ExceededMaxLength]);
         }
         private void ApplyCustomValidation()
         {

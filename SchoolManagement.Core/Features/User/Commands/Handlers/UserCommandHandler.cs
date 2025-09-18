@@ -9,7 +9,9 @@ using SchoolManagement.Data.Identity;
 
 namespace SchoolManagement.Core.Features.User.Commands.Handlers
 {
-    public class UserCommandHandler : ResponseHandler, IRequestHandler<AddUserCommand, Response<string>>
+    public class UserCommandHandler : ResponseHandler,
+                                      IRequestHandler<AddUserCommand, Response<string>>,
+                                      IRequestHandler<UpdateUserCommand, Response<string>>
     {
         private readonly IStringLocalizer<SharedResources> _stringLocalizer;
         private readonly UserManager<ApplicationUser> _userManager;
@@ -40,6 +42,21 @@ namespace SchoolManagement.Core.Features.User.Commands.Handlers
                 return Created<string>();
 
             return BadRequest<string>(result.Errors.FirstOrDefault().Description);
+        }
+
+        public async Task<Response<string>> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
+        {
+            var userById = await _userManager.FindByIdAsync(request.Id);
+            if (userById == null)
+                return NotFound<string>();
+
+            var userMapper = _mapper.Map(request, userById);
+            var result = await _userManager.UpdateAsync(userMapper);
+
+            if (result.Succeeded)
+                return Updated<string>();
+
+            return BadRequest<string>();
         }
     }
 }

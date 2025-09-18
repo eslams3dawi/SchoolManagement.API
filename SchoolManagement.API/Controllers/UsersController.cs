@@ -33,5 +33,11 @@ namespace SchoolManagement.API.Controllers
             var result = await _mediator.Send(new GetUserByIdQuery(id));
             return NewResult(result);
         }
+        [HttpPut(Router.UserRouting.Update)]
+        public async Task<IActionResult> UpdateUser([FromBody] UpdateUserCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return NewResult(result);
+        }
     }
 }

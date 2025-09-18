@@ -14,7 +14,7 @@
             public const string List = Prefix + "/" + "List";
             public const string GetById = Prefix + "/" + SingleRoute;
             public const string Create = Prefix + "/" + "Add";
-            public const string Update = Prefix + "/" + "Edit";
+            public const string Update = Prefix + "/" + "Update";
             public const string Delete = Prefix + "/" + "Delete" + "/" + "{id}";
             public const string Paginated = Prefix + "/" + "Paginated";
         }
@@ -23,7 +23,7 @@
             public const string Prefix = Rule + "/" + "Department";
             public const string GetById = Prefix + "/" + "Id";
             public const string Create = Prefix + "/" + "Add";
-            public const string Update = Prefix + "/" + "Edit";
+            public const string Update = Prefix + "/" + "Update";
             public const string Delete = Prefix + "/" + "Delete" + "/" + "{id}";
             public const string Paginated = Prefix + "/" + "Paginated";
         }
@@ -32,7 +32,7 @@
             public const string Prefix = Rule + "/" + "User";
             public const string GetById = Prefix + "/" + "{id}";
             public const string Create = Prefix + "/" + "Add";
-            public const string Update = Prefix + "/" + "Edit";
+            public const string Update = Prefix + "/" + "Update";
             public const string Delete = Prefix + "/" + "Delete" + "/" + "{id}";
             public const string Paginated = Prefix + "/" + "Paginated";
         }
