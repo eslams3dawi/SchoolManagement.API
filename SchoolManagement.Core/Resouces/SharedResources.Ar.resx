@@ -186,7 +186,16 @@
   <data name="EmailExists" xml:space="preserve">
     <value>البريد الألكتروني موجود بالفعل</value>
   </data>
-  <data name="FailedWhenAddingUser" xml:space="preserve">
-    <value>Failed When Adding User</value>
+  <data name="DeletingFailed" xml:space="preserve">
+    <value>فشل الحذف</value>
+  </data>
+  <data name="UpdatingFailed" xml:space="preserve">
+    <value>فشل التحديث</value>
+  </data>
+  <data name="AddingFailed" xml:space="preserve">
+    <value>فشل إضافة المستخدم</value>
+  </data>
+  <data name="ChangePasswordFailed" xml:space="preserve">
+    <value>فشل تغيير كلمة المرور</value>
   </data>
 </root>

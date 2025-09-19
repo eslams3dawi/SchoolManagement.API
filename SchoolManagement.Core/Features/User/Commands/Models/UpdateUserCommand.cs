@@ -6,6 +6,7 @@ namespace SchoolManagement.Core.Features.User.Commands.Models
     public class UpdateUserCommand : IRequest<Response<string>>
     {
         public string Id { get; set; }
+        public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Country { get; set; }
