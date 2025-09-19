@@ -35,6 +35,7 @@
             public const string Update = Prefix + "/" + "Update";
             public const string Delete = Prefix + "/" + "Delete" + "/" + "{id}";
             public const string Paginated = Prefix + "/" + "Paginated";
+            public const string ChangePassword = Prefix + "/" + "ChangePassword";
         }
     }
 }

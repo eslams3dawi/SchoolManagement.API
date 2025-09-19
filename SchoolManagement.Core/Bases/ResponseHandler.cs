@@ -70,13 +70,14 @@ namespace SchoolManagement.Core.Bases
                 Message = _stringLocalizer[SharedResourcesKeys.Unauthorized]
             };
         }
-        public Response<T> BadRequest<T>(string Message = null)
+        public Response<T> BadRequest<T>(string Message = null, List<string> errors = null)
         {
             return new Response<T>()
             {
                 StatusCode = System.Net.HttpStatusCode.BadRequest,
                 Succeeded = false,
-                Message = Message == null ? _stringLocalizer[SharedResourcesKeys.BadRequest] : Message
+                Message = Message == null ? _stringLocalizer[SharedResourcesKeys.BadRequest] : Message,
+                Errors = errors
             };
         }
         public Response<T> UnprocessableEntity<T>(string Message = null)
