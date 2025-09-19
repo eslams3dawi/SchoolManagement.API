@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.Localization;
-using SchoolManagement.Core.Features.User.Commands.Models;
+using SchoolManagement.Core.Authentication.Commands.Models;
 using SchoolManagement.Core.Resources;
 
-namespace SchoolManagement.Core.Features.User.Commands.Validators
+namespace SchoolManagement.Core.Authentication.Commands.Validators
 {
-    public class SignInValidator : AbstractValidator<ChangeUserPasswordCommand>
+    public class SignInValidator : AbstractValidator<SignInCommand>
     {
         private readonly IStringLocalizer<SharedResources> _stringLocalizer;
 
@@ -18,21 +18,15 @@ namespace SchoolManagement.Core.Features.User.Commands.Validators
 
         private void ApplyValidationRules()
         {
-            RuleFor(x => x.Id)
+            RuleFor(x => x.UserName)
                 .NotEmpty().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty])
-                .NotNull().WithMessage(_stringLocalizer[SharedResourcesKeys.NotNull]);
-            RuleFor(x => x.CurrentPassword)
+                .NotNull().WithMessage(_stringLocalizer[SharedResourcesKeys.NotNull])
+                .MaximumLength(256).WithMessage(_stringLocalizer[SharedResourcesKeys.ExceededMaxLength])
+                .MinimumLength(10).WithMessage(_stringLocalizer[SharedResourcesKeys.ExceededMaxLength]);
+            RuleFor(x => x.Password)
                 .NotEmpty().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty])
                 .NotNull().WithMessage(_stringLocalizer[SharedResourcesKeys.NotNull])
                 .MinimumLength(8).WithMessage(_stringLocalizer[SharedResourcesKeys.LessThanMinLength]);
-            RuleFor(x => x.NewPassword)
-                .NotEmpty().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty])
-                .NotNull().WithMessage(_stringLocalizer[SharedResourcesKeys.NotNull])
-                .MinimumLength(8).WithMessage(_stringLocalizer[SharedResourcesKeys.LessThanMinLength]);
-            RuleFor(x => x.ConfirmNewPassword)
-                .NotEmpty().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty])
-                .NotNull().WithMessage(_stringLocalizer[SharedResourcesKeys.NotNull])
-                .Equal(x => x.NewPassword).WithMessage(_stringLocalizer[SharedResourcesKeys.PasswordsNotMatch]);
         }
         private void ApplyCustomValidation()
         {

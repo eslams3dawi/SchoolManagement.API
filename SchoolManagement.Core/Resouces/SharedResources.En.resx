@@ -198,4 +198,16 @@
   <data name="ChangePasswordFailed" xml:space="preserve">
     <value>Change Password Failed</value>
   </data>
+  <data name="UserName" xml:space="preserve">
+    <value>UserName</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="UserNameIsNotExists" xml:space="preserve">
+    <value>UserName Is Not Exists</value>
+  </data>
+  <data name="SignInFailed" xml:space="preserve">
+    <value>UserName Or Password Is Wrong</value>
+  </data>
 </root>

@@ -198,4 +198,16 @@
   <data name="ChangePasswordFailed" xml:space="preserve">
     <value>فشل تغيير كلمة المرور</value>
   </data>
+  <data name="UserName" xml:space="preserve">
+    <value>اسم المستخدم</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>كلمة المرور</value>
+  </data>
+  <data name="UserNameIsNotExists" xml:space="preserve">
+    <value>اسم المستخدم غير موجود</value>
+  </data>
+  <data name="SignInFailed" xml:space="preserve">
+    <value>اسم المستخدم أو كلمة المرور خاطئة</value>
+  </data>
 </root>
