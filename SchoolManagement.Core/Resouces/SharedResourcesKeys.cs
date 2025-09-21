@@ -13,6 +13,7 @@
         public const string UpdatingFailed = "UpdatingFailed";
         public const string AddingFailed = "AddingFailed";
         public const string ChangePasswordFailed = "ChangePasswordFailed";
+        public const string SignInFailed = "SignInFailed";
 
         //Validation
         public const string Required = "Required";
@@ -27,8 +28,11 @@
         public const string PhoneExists = "PhoneExists";
         public const string NotValid = "NotValid";
         public const string PasswordsNotMatch = "PasswordsNotMatch";
-        public const string EmailExists = "EmailExists";
+
         public const string UsernameExists = "UsernameExists";
+        public const string EmailExists = "EmailExists";
+
+        public const string UserNameIsNotExists = "UserNameIsNotExists";
 
         //Attributes
         public const string FirstName = "FirstName";
@@ -36,5 +40,17 @@
         public const string Address = "Address";
         public const string Phone = "Phone";
         public const string DepartmentId = "DepartmentId";
+        public const string UserName = "UserName";
+        public const string Password = "Password";
+
+        public const string InvalidAlgorithm = "InvalidAlgorithm";
+        public const string TokenIsNotExpired = "TokenIsNotExpired";
+        public const string InvalidTokenClaims = "InvalidTokenClaims";
+        public const string RefreshTokenIsNotFound = "RefreshTokenIsNotFound";
+        public const string RefreshTokenIsExpired = "RefreshTokenIsExpired";
+        public const string RefreshTokenIsNoLongerValid = "RefreshTokenIsNoLongerValid";
+
+        public const string InvalidToken = "InvalidToken";
+        public const string ValidToken = "ValidToken";
     }
 }

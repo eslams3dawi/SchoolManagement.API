@@ -14,6 +14,7 @@ namespace SchoolManagement.Infrastructure
             services.AddTransient<IAssignmentRepository, AssignmentRepository>();
             services.AddTransient<IInstructorRepository, InstructorRepository>();
             services.AddTransient<ISubjectRepository, SubjectRepository>();
+            services.AddTransient<IRefreshTokenRepository, RefreshTokenRepository>();
 
             return services;
         }

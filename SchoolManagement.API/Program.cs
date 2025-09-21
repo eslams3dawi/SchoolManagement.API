@@ -20,14 +20,15 @@ namespace SchoolManagement
                 {
                     options.SuppressModelStateInvalidFilter = true;
                 });
+
+
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
 
             #region Dependency Injection
-            builder.Services.AddInfrastructureDependencies()
-                            .AddServiceDependencies()
+            builder.Services.AddServiceRegistration(builder.Configuration)
                             .AddCoreDependencies()
-                            .AddServiceRegistration(builder.Configuration);
+                            .AddInfrastructureDependencies()
+                            .AddServiceDependencies();
             #endregion
 
             #region Localization
@@ -82,7 +83,10 @@ namespace SchoolManagement
 
             app.UseHttpsRedirection();
             app.UseCors();
+
+            app.UseAuthentication();
             app.UseAuthorization();
+
             app.MapControllers();
             app.MapGet("/", () => Results.Redirect("/swagger/index.html"))
                 .ExcludeFromDescription();
