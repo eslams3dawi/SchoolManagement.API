@@ -20,13 +20,15 @@ namespace SchoolManagement
                 {
                     options.SuppressModelStateInvalidFilter = true;
                 });
+
+
             builder.Services.AddEndpointsApiExplorer();
 
             #region Dependency Injection
-            builder.Services.AddInfrastructureDependencies()
-                            .AddServiceDependencies()
+            builder.Services.AddServiceRegistration(builder.Configuration)
                             .AddCoreDependencies()
-                            .AddServiceRegistration(builder.Configuration);
+                            .AddInfrastructureDependencies()
+                            .AddServiceDependencies();
             #endregion
 
             #region Localization

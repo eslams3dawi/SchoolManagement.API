@@ -23,5 +23,6 @@ namespace SchoolManagement.Infrastructure.Database
         public DbSet<InstructorSubject> InstructorSubjects { get; set; }
         public DbSet<Assignment> Assignments { get; set; }
         public DbSet<StudentAssignment> StudentAssignments { get; set; }
+        public DbSet<UserRefreshToken> UserRefreshToken { get; set; }
     }
 }

@@ -22,9 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Authentication\Queries\Handlers\" />
-    <Folder Include="Authentication\Queries\Models\" />
-    <Folder Include="Authentication\Queries\Validators\" />
+    <Folder Include="Features\Authentication\Queries\Validators\" />
     <Folder Include="Features\Department\Commands\" />
     <Folder Include="Mapping\Departments\CommandMapping\" />
   </ItemGroup>

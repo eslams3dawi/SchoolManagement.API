@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.Localization;
-using SchoolManagement.Core.Authentication.Commands.Models;
+using SchoolManagement.Core.Features.Authentication.Commands.Models;
 using SchoolManagement.Core.Resources;
 
-namespace SchoolManagement.Core.Authentication.Commands.Validators
+namespace SchoolManagement.Core.Features.Authentication.Commands.Validators
 {
     public class SignInValidator : AbstractValidator<SignInCommand>
     {

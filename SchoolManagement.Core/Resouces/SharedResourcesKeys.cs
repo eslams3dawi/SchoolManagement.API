@@ -42,5 +42,15 @@
         public const string DepartmentId = "DepartmentId";
         public const string UserName = "UserName";
         public const string Password = "Password";
+
+        public const string InvalidAlgorithm = "InvalidAlgorithm";
+        public const string TokenIsNotExpired = "TokenIsNotExpired";
+        public const string InvalidTokenClaims = "InvalidTokenClaims";
+        public const string RefreshTokenIsNotFound = "RefreshTokenIsNotFound";
+        public const string RefreshTokenIsExpired = "RefreshTokenIsExpired";
+        public const string RefreshTokenIsNoLongerValid = "RefreshTokenIsNoLongerValid";
+
+        public const string InvalidToken = "InvalidToken";
+        public const string ValidToken = "ValidToken";
     }
 }

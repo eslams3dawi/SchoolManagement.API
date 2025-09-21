@@ -210,4 +210,28 @@
   <data name="SignInFailed" xml:space="preserve">
     <value>اسم المستخدم أو كلمة المرور خاطئة</value>
   </data>
+  <data name="InvalidAlgorithm" xml:space="preserve">
+    <value>خوارزمية غير صالحة</value>
+  </data>
+  <data name="TokenIsNotExpired" xml:space="preserve">
+    <value>التوكن غير منتهي الصلاحية</value>
+  </data>
+  <data name="InvalidTokenClaims" xml:space="preserve">
+    <value>مطالبات رمز غير صالحة</value>
+  </data>
+  <data name="RefreshTokenIsNotFound" xml:space="preserve">
+    <value>لم يتم العثور على رمز التحديث</value>
+  </data>
+  <data name="RefreshTokenIsExpired" xml:space="preserve">
+    <value>رمز التحديث منتهي الصلاحية</value>
+  </data>
+  <data name="RefreshTokenIsNoLongerValid" xml:space="preserve">
+    <value>رمز التحديث لم يعد صالحًا</value>
+  </data>
+  <data name="InvalidToken" xml:space="preserve">
+    <value>رمز غير صالح</value>
+  </data>
+  <data name="ValidToken" xml:space="preserve">
+    <value>رمز صالح</value>
+  </data>
 </root>

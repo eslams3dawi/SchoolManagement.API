@@ -210,4 +210,28 @@
   <data name="SignInFailed" xml:space="preserve">
     <value>UserName Or Password Is Wrong</value>
   </data>
+  <data name="InvalidAlgorithm" xml:space="preserve">
+    <value>Invalid Algorithm</value>
+  </data>
+  <data name="TokenIsNotExpired" xml:space="preserve">
+    <value>Token Is Not Expired</value>
+  </data>
+  <data name="InvalidTokenClaims" xml:space="preserve">
+    <value>Invalid Token Claims</value>
+  </data>
+  <data name="RefreshTokenIsNotFound" xml:space="preserve">
+    <value>Refresh Token Is Not Found</value>
+  </data>
+  <data name="RefreshTokenIsExpired" xml:space="preserve">
+    <value>Refresh Token Is Expired</value>
+  </data>
+  <data name="RefreshTokenIsNoLongerValid" xml:space="preserve">
+    <value>Refresh Token Is No Longer Valid</value>
+  </data>
+  <data name="InvalidToken" xml:space="preserve">
+    <value>Invalid Token</value>
+  </data>
+  <data name="ValidToken" xml:space="preserve">
+    <value>Valid Token</value>
+  </data>
 </root>

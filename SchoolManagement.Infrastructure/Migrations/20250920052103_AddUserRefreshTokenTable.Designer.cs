@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchoolManagement.Infrastructure.Database;
 
@@ -11,9 +12,11 @@ using SchoolManagement.Infrastructure.Database;
 namespace SchoolManagement.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250920052103_AddUserRefreshTokenTable")]
+    partial class AddUserRefreshTokenTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -751,9 +754,6 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.Property<string>("RefreshToken")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Token")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -943,7 +943,7 @@ namespace SchoolManagement.Infrastructure.Migrations
             modelBuilder.Entity("SchoolManagement.Data.Identity.UserRefreshToken", b =>
                 {
                     b.HasOne("SchoolManagement.Data.Identity.ApplicationUser", "User")
-                        .WithMany("UserRefreshTokens")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -990,11 +990,6 @@ namespace SchoolManagement.Infrastructure.Migrations
                     b.Navigation("InstructorSubjects");
 
                     b.Navigation("StudentSubjects");
-                });
-
-            modelBuilder.Entity("SchoolManagement.Data.Identity.ApplicationUser", b =>
-                {
-                    b.Navigation("UserRefreshTokens");
                 });
 #pragma warning restore 612, 618
         }
