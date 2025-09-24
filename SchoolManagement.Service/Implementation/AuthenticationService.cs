@@ -55,7 +55,7 @@ namespace SchoolManagement.Service.Implementation
         private (JwtSecurityToken, string) GenerateJwtToken(ApplicationUser user)
         {
             var Claims = GetClaims(user);
-            var Expires = DateTime.UtcNow.AddMinutes(_jwtSettings.AccessTokenExpireDate);
+            var Expires = DateTime.UtcNow.AddDays(_jwtSettings.AccessTokenExpireDate);
             var JwtToken = new JwtSecurityToken
             (
                 _jwtSettings.Issuer,
@@ -73,10 +73,14 @@ namespace SchoolManagement.Service.Implementation
             var Claims = new List<Claim>()
             {
                 new Claim(nameof(UserClaims.Id), user.Id),
-                new Claim(nameof(UserClaims.UserName), user.UserName),
-                new Claim(nameof(UserClaims.Email), user.Email),
+                new Claim(nameof(ClaimTypes.NameIdentifier), user.UserName),
+                new Claim(nameof(ClaimTypes.Email), user.Email),
                 new Claim(nameof(UserClaims.PhoneNumber), user.PhoneNumber)
             };
+
+            var userRoles = _userManager.GetRolesAsync(user).Result;
+            foreach (var role in userRoles)
+                Claims.Add(new Claim(nameof(UserClaims.roles), role));
 
             return Claims;
         }
@@ -86,7 +90,7 @@ namespace SchoolManagement.Service.Implementation
             var securityKeyString = _jwtSettings.SecretKey;
             var securityKeyByte = Encoding.ASCII.GetBytes(securityKeyString);
             SecurityKey securityKey = new SymmetricSecurityKey(securityKeyByte);
-            var signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
+            var signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             return signingCredentials;
         }
@@ -177,7 +181,7 @@ namespace SchoolManagement.Service.Implementation
 
         public async Task<(string, DateTime?)> ValidateOnDetails(JwtSecurityToken jwtToken, string accessToken, string refreshToken)
         {
-            if (jwtToken == null || jwtToken.Header.Alg != SecurityAlgorithms.HmacSha256Signature)
+            if (jwtToken == null || jwtToken.Header.Alg != SecurityAlgorithms.HmacSha256)
                 return ("Invalid Algorithm", null);
 
             if (jwtToken.ValidTo > DateTime.UtcNow)

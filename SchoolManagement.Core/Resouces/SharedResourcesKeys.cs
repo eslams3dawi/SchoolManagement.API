@@ -33,6 +33,7 @@
         public const string EmailExists = "EmailExists";
 
         public const string UserNameIsNotExists = "UserNameIsNotExists";
+        public const string UserIdNotExists = "UserIdNotExists";
 
         //Attributes
         public const string FirstName = "FirstName";
@@ -52,5 +53,9 @@
 
         public const string InvalidToken = "InvalidToken";
         public const string ValidToken = "ValidToken";
+
+        public const string RoleExists = "RoleExists";
+        public const string RoleNotFound = "RoleNotFound";
+        public const string CanNotDeleteUsedRole = "CanNotDeleteUsedRole";
     }
 }
