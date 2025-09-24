@@ -22,7 +22,7 @@ namespace SchoolManagement.Core.Features.Authentication.Commands.Validators
                 .NotEmpty().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty])
                 .NotNull().WithMessage(_stringLocalizer[SharedResourcesKeys.NotNull])
                 .MaximumLength(256).WithMessage(_stringLocalizer[SharedResourcesKeys.ExceededMaxLength])
-                .MinimumLength(10).WithMessage(_stringLocalizer[SharedResourcesKeys.ExceededMaxLength]);
+                .MinimumLength(5).WithMessage(_stringLocalizer[SharedResourcesKeys.LessThanMinLength]);
             RuleFor(x => x.Password)
                 .NotEmpty().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty])
                 .NotNull().WithMessage(_stringLocalizer[SharedResourcesKeys.NotNull])

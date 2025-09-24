@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.API.Base;
 using SchoolManagement.Core.Features.User.Commands.Models;
@@ -8,6 +9,7 @@ using SchoolManagement.Data.AppMetaData;
 namespace SchoolManagement.API.Controllers
 {
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class UsersController : AppController
     {
         public UsersController(IMediator mediator) : base(mediator)

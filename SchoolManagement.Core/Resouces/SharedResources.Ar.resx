@@ -234,4 +234,16 @@
   <data name="ValidToken" xml:space="preserve">
     <value>رمز صالح</value>
   </data>
+  <data name="RoleExists" xml:space="preserve">
+    <value>الدور موجود بالفعل</value>
+  </data>
+  <data name="UserIdNotExists" xml:space="preserve">
+    <value>معرف المستخدم غير موجود</value>
+  </data>
+  <data name="RoleNotFound" xml:space="preserve">
+    <value>لم يتم العثور على الدور</value>
+  </data>
+  <data name="CanNotDeleteUsedRole" xml:space="preserve">
+    <value>لا يمكن حذف الدور لأنه مستخدم</value>
+  </data>
 </root>

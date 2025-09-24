@@ -1,8 +1,11 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
 using SchoolManagement.Core;
 using SchoolManagement.Core.Middleware;
+using SchoolManagement.Data.Identity;
 using SchoolManagement.Infrastructure;
+using SchoolManagement.Infrastructure.IdentitySeeder;
 using SchoolManagement.Service;
 using System.Globalization;
 
@@ -10,7 +13,7 @@ namespace SchoolManagement
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -66,6 +69,13 @@ namespace SchoolManagement
             #endregion
 
             var app = builder.Build();
+            using (var scope = app.Services.CreateScope())
+            {
+                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                await RoleSeeder.SeedAsync(roleManager);
+                await UserSeeder.SeedAsync(userManager);
+            }
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

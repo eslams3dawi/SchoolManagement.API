@@ -8,11 +8,11 @@ using SchoolManagement.Data.AppMetaData;
 namespace SchoolManagement.API.Controllers
 {
     [ApiController]
-    [Authorize]
     public class DepartmentsController : AppController
     {
         public DepartmentsController(IMediator mediator) : base(mediator) { }
 
+        [Authorize("Admin, Instructor, Student")]
         [HttpGet(Router.DepartmentRouting.GetById)]
         public async Task<IActionResult> GetDepartmentById([FromQuery] GetDepartmentByIdQuery query)
         {

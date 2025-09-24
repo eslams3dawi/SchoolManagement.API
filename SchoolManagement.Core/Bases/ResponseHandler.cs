@@ -11,6 +11,10 @@ namespace SchoolManagement.Core.Bases
         {
             _stringLocalizer = stringLocalizer;
         }
+        public ResponseHandler()
+        {
+
+        }
         public Response<T> Deleted<T>()
         {
             return new Response<T>()
