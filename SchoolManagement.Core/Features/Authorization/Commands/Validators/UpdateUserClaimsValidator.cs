@@ -6,12 +6,12 @@ using SchoolManagement.Service.Interfaces;
 
 namespace SchoolManagement.Core.Features.Authorization.Commands.Validators
 {
-    public class AddRolesToUserValidator : AbstractValidator<AddRolesToUserCommand>
+    public class UpdateUserClaimsValidator : AbstractValidator<UpdateUserClaimsCommand>
     {
         private readonly IStringLocalizer<SharedResources> _stringLocalizer;
         private readonly IAuthorizationService _authorizationService;
 
-        public AddRolesToUserValidator(IStringLocalizer<SharedResources> stringLocalizer, IAuthorizationService authorizationService)
+        public UpdateUserClaimsValidator(IStringLocalizer<SharedResources> stringLocalizer, IAuthorizationService authorizationService)
         {
             _stringLocalizer = stringLocalizer;
             _authorizationService = authorizationService;
@@ -29,11 +29,8 @@ namespace SchoolManagement.Core.Features.Authorization.Commands.Validators
         public void ApplyCustomValidation()
         {
             RuleFor(x => x.UserId)
-                .MustAsync(async (Key, CancellationToken) => !await _authorizationService.IsUserIdExists(Key))
-                .WithMessage(_stringLocalizer[SharedResourcesKeys.RoleExists]);
-            RuleForEach(x => x.Roles)
-                .MustAsync(async (Key, CancellationToken) => !await _authorizationService.IsRoleNameExists(Key))
-                .WithMessage(_stringLocalizer[SharedResourcesKeys.RoleExists]);
+                .MustAsync(async (Key, CancellationToken) => await _authorizationService.IsUserIdExists(Key))
+                .WithMessage(_stringLocalizer[SharedResourcesKeys.UserIdNotExists]);
         }
     }
 }

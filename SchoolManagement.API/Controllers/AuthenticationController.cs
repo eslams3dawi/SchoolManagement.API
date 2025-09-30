@@ -21,6 +21,7 @@ namespace SchoolManagement.API.Controllers
         {
         }
 
+        [SwaggerOperation(Summary = "SignIn by existing account without registration", OperationId = "SignIn")]
         [HttpPost(Router.AuthenticationRouting.SignIn)]
         public async Task<IActionResult> SignIn([FromBody] SignInCommand command)
         {

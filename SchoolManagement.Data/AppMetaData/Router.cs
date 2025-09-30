@@ -52,13 +52,26 @@
         {
             public const string Prefix = Rule + "/" + "Authorization";
             public const string RolePrefix = Prefix + "/" + "Role";
+            public const string ClaimPrefix = Prefix + "/" + "Claim";
 
+            //Role
             public const string CreateRole = RolePrefix + "/" + "Create";
-            public const string AssignRolesToUser = RolePrefix + "/" + "Assign-To-User";
             public const string UpdateRole = RolePrefix + "/" + "Update-Role";
             public const string List = RolePrefix + "/" + "List";
             public const string GetById = RolePrefix + "/" + "By-Id" + "/" + SingleRoute;
             public const string Delete = RolePrefix + "/" + SingleRoute;
+            public const string ManageUserRoles = RolePrefix + "/" + "Manage-User-Roles" + "/" + SingleRoute;
+            public const string UpdateUserRoles = RolePrefix + "/" + "Update-User-Roles";
+
+
+        }
+        public static class ClaimRouting
+        {
+            public const string Prefix = Rule + "/" + "Authorization";
+            public const string ClaimPrefix = Prefix + "/" + "Claim";
+
+            public const string ManageUserClaims = ClaimPrefix + "/" + "Manage-User-Claims" + "/" + SingleRoute;
+            public const string UpdateUserClaims = ClaimPrefix + "/" + "Update-User-Claims" + "/" + SingleRoute;
         }
     }
 }
