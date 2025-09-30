@@ -9,9 +9,9 @@ namespace SchoolManagement.Core.Features.Authorization.Commands.Handlers
 {
     public class RoleCommandHandler : ResponseHandler,
                                       IRequestHandler<AddRoleCommand, Response<string>>,
-                                      IRequestHandler<AddRolesToUserCommand, Response<string>>,
                                       IRequestHandler<UpdateRoleCommand, Response<string>>,
-                                      IRequestHandler<DeleteRoleCommand, Response<string>>
+                                      IRequestHandler<DeleteRoleCommand, Response<string>>,
+                                      IRequestHandler<UpdateUserRolesCommand, Response<string>>
     {
         private readonly IStringLocalizer<SharedResources> _stringLocalizer;
         private readonly IAuthorizationService _authorizationService;
@@ -31,13 +31,19 @@ namespace SchoolManagement.Core.Features.Authorization.Commands.Handlers
             return BadRequest<string>();
         }
 
-        public async Task<Response<string>> Handle(AddRolesToUserCommand request, CancellationToken cancellationToken)
+        public async Task<Response<string>> Handle(UpdateUserRolesCommand request, CancellationToken cancellationToken)
         {
-            var result = await _authorizationService.AddRolesToUserAsync(request.UserId, request.Roles);
-            if (result == "Assigned")
-                return Created<string>();
-
-            return BadRequest<string>();
+            var result = await _authorizationService.UpdateUserRoles(request);
+            switch (result)
+            {
+                case "Something Went Wrong While Removing Old User Roles":
+                    return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.SomethingWentWrongWhileRemovingOldUserRoles]);
+                case "Something Went Wrong While Adding User Roles":
+                    return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.SomethingWentWrongWhileAddingUserRoles]);
+                case "Something Went Wrong In Database While Updating User Roles":
+                    return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.SomethingWentWrongInDatabaseWhileUpdatingUserRoles]);
+            }
+            return Success<string>(_stringLocalizer[SharedResourcesKeys.RolesAddedSuccessfully]);
         }
 
         public async Task<Response<string>> Handle(UpdateRoleCommand request, CancellationToken cancellationToken)

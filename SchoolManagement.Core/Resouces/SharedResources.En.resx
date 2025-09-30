@@ -246,4 +246,28 @@
   <data name="CanNotDeleteUsedRole" xml:space="preserve">
     <value>Can Not Delete Used Role</value>
   </data>
+  <data name="SomethingWentWrongWhileRemovingOldUserRoles" xml:space="preserve">
+    <value>Something Went Wrong While Removing Old User Roles</value>
+  </data>
+  <data name="SomethingWentWrongWhileAddingUserRoles" xml:space="preserve">
+    <value>Something Went Wrong While Adding User Roles</value>
+  </data>
+  <data name="RolesAddedSuccessfully" xml:space="preserve">
+    <value>Roles Added Successfully</value>
+  </data>
+  <data name="SomethingWentWrongInDatabaseWhileUpdatingUserRoles" xml:space="preserve">
+    <value>Something Went Wrong In Database While Updating User Roles</value>
+  </data>
+  <data name="SomethingWentWrongWhileRemovingOldUserClaims" xml:space="preserve">
+    <value>Something Went Wrong While Removing Old User Claims</value>
+  </data>
+  <data name="SomethingWentWrongWhileAddingUserClaims" xml:space="preserve">
+    <value>Something Went Wrong While Adding User Claims</value>
+  </data>
+  <data name="ClaimsAddedSuccessfully" xml:space="preserve">
+    <value>Claims Added Successfully</value>
+  </data>
+  <data name="SomethingWentWrongInDatabaseWhileUpdatingUserClaims" xml:space="preserve">
+    <value>Something Went Wrong In Database While Updating User Claims</value>
+  </data>
 </root>

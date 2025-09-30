@@ -246,4 +246,28 @@
   <data name="CanNotDeleteUsedRole" xml:space="preserve">
     <value>لا يمكن حذف الدور لأنه مستخدم</value>
   </data>
+  <data name="SomethingWentWrongWhileRemovingOldUserRoles" xml:space="preserve">
+    <value>حدث خطأ ما أثناء إزالة أدوار المستخدم القديمة</value>
+  </data>
+  <data name="SomethingWentWrongWhileAddingUserRoles" xml:space="preserve">
+    <value>حدث خطأ أثناء إضافة أدوار المستخدم</value>
+  </data>
+  <data name="RolesAddedSuccessfully" xml:space="preserve">
+    <value>تمت إضافة الأدوار بنجاح</value>
+  </data>
+  <data name="SomethingWentWrongInDatabaseWhileUpdatingUserRoles" xml:space="preserve">
+    <value>حدث خطأ ما في قاعدة البيانات أثناء تحديث أدوار المستخدم</value>
+  </data>
+  <data name="SomethingWentWrongWhileRemovingOldUserClaims" xml:space="preserve">
+    <value>حدث خطأ أثناء إزالة مطالبات المستخدم القديمة</value>
+  </data>
+  <data name="SomethingWentWrongWhileAddingUserClaims" xml:space="preserve">
+    <value>حدث خطأ أثناء إضافة مطالبات المستخدم</value>
+  </data>
+  <data name="ClaimsAddedSuccessfully" xml:space="preserve">
+    <value>تمت إضافة المطالبات بنجاح</value>
+  </data>
+  <data name="SomethingWentWrongInDatabaseWhileUpdatingUserClaims" xml:space="preserve">
+    <value>حدث خطأ في قاعدة البيانات أثناء تحديث مطالبات المستخدم</value>
+  </data>
 </root>

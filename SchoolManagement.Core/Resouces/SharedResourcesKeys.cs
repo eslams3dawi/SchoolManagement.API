@@ -57,5 +57,15 @@
         public const string RoleExists = "RoleExists";
         public const string RoleNotFound = "RoleNotFound";
         public const string CanNotDeleteUsedRole = "CanNotDeleteUsedRole";
+
+        public const string SomethingWentWrongWhileRemovingOldUserRoles = "SomethingWentWrongWhileRemovingOldUserRoles";
+        public const string SomethingWentWrongWhileAddingUserRoles = "SomethingWentWrongWhileAddingUserRoles";
+        public const string RolesAddedSuccessfully = "RolesAddedSuccessfully";
+        public const string SomethingWentWrongInDatabaseWhileUpdatingUserRoles = "SomethingWentWrongInDatabaseWhileUpdatingUserRoles";
+
+        public const string SomethingWentWrongWhileRemovingOldUserClaims = "SomethingWentWrongWhileRemovingOldUserClaims";
+        public const string SomethingWentWrongWhileAddingUserClaims = "SomethingWentWrongWhileAddingUserClaims";
+        public const string ClaimsAddedSuccessfully = "ClaimsAddedSuccessfully";
+        public const string SomethingWentWrongInDatabaseWhileUpdatingUserClaims = "SomethingWentWrongInDatabaseWhileUpdatingUserClaims";
     }
 }
