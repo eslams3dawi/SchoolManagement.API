@@ -14,7 +14,7 @@ namespace SchoolManagement.API.Controllers
         public DepartmentsController(IMediator mediator) : base(mediator) { }
 
 
-        [Authorize("Admin, Instructor, Student")]
+        [Authorize(Roles = "Admin, Instructor, Student")]
         [HttpGet(Router.DepartmentRouting.GetById)]
         [SwaggerOperation(Summary = "Return a paginated result of single department with assigned students, instructors and subjects", OperationId = "GetRoleById")]
         public async Task<IActionResult> GetDepartmentById([FromQuery] GetDepartmentByIdQuery query)

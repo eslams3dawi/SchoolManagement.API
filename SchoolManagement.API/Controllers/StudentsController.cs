@@ -44,6 +44,7 @@ namespace SchoolManagement.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        [Authorize(Policy = "AddStudent")]
         [HttpPost(Router.StudentRouting.Create)]
         [SwaggerOperation(Summary = "Create a student account instead of student registration", OperationId = "AddStudent")]
         public async Task<IActionResult> AddStudent([FromBody] AddStudentCommand student)
@@ -53,6 +54,7 @@ namespace SchoolManagement.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        [Authorize(Policy = "EditStudent")]
         [HttpPut(Router.StudentRouting.Update)]
         [SwaggerOperation(Summary = "Edit student's data", OperationId = "UpdateStudent")]
         public async Task<IActionResult> UpdateStudent([FromBody] UpdateStudentCommand student)
@@ -63,6 +65,7 @@ namespace SchoolManagement.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpDelete(Router.StudentRouting.Delete)]
+        [Authorize(Policy = "DeleteStudent")]
         [SwaggerOperation(Summary = "Remove student by his ID", OperationId = "DeleteStudent")]
         public async Task<IActionResult> DeleteStudent([FromRoute] int id)
         {

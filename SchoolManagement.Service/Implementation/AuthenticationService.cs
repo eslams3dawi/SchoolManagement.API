@@ -82,6 +82,9 @@ namespace SchoolManagement.Service.Implementation
             foreach (var role in userRoles)
                 Claims.Add(new Claim(nameof(UserClaims.roles), role));
 
+            var userClaims = _userManager.GetClaimsAsync(user).Result;
+            Claims.AddRange(userClaims);
+
             return Claims;
         }
 
@@ -208,6 +211,17 @@ namespace SchoolManagement.Service.Implementation
             }
 
             return (userId, userRefreshToken.ExpirationDate);
+        }
+
+        public async Task<string> ConfirmEmail(string userId, string code)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            var confirmResult = await _userManager.ConfirmEmailAsync(user, code);
+
+            if (confirmResult.Succeeded)
+                return "Email Confirmed";
+
+            return "Failed";
         }
     }
 }

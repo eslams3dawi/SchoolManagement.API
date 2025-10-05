@@ -67,5 +67,15 @@
         public const string SomethingWentWrongWhileAddingUserClaims = "SomethingWentWrongWhileAddingUserClaims";
         public const string ClaimsAddedSuccessfully = "ClaimsAddedSuccessfully";
         public const string SomethingWentWrongInDatabaseWhileUpdatingUserClaims = "SomethingWentWrongInDatabaseWhileUpdatingUserClaims";
+
+        public const string Email = "Email";
+        public const string Message = "Message";
+
+        public const string EmailSentSuccessfully = "EmailSentSuccessfully";
+        public const string FailedToSendEmail = "FailedToSendEmail";
+
+        public const string PleaseConfirmEmail = "PleaseConfirmEmail";
+        public const string EmailConfirmedSuccessfully = "EmailConfirmedSuccessfully";
+        public const string FailedToConfirmEmail = "FailedToConfirmEmail";
     }
 }

@@ -32,7 +32,7 @@ namespace SchoolManagement.Infrastructure
                 options.Lockout.AllowedForNewUsers = true;
 
                 options.User.RequireUniqueEmail = true;
-                options.SignIn.RequireConfirmedEmail = false;
+                options.SignIn.RequireConfirmedEmail = true;
                 options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -96,6 +96,23 @@ namespace SchoolManagement.Infrastructure
             Array.Empty<string>()
             }
            });
+            });
+
+            //Claims Policy
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AddStudent", policy =>
+                {
+                    policy.RequireClaim("Add Student", "True");
+                });
+                options.AddPolicy("EditStudent", policy =>
+                {
+                    policy.RequireClaim("Edit Student", "True");
+                });
+                options.AddPolicy("DeleteStudent", policy =>
+                {
+                    policy.RequireClaim("Delete Student", "True");
+                });
             });
             return services;
         }

@@ -31,7 +31,7 @@ namespace SchoolManagement
             builder.Services.AddServiceRegistration(builder.Configuration)
                             .AddCoreDependencies()
                             .AddInfrastructureDependencies()
-                            .AddServiceDependencies();
+                            .AddServiceDependencies(builder.Configuration);
             #endregion
 
             #region Localization

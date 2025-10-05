@@ -44,5 +44,13 @@ namespace SchoolManagement.API.Controllers
             var response = await _mediator.Send(query);
             return NewResult(response);
         }
+
+        [SwaggerOperation(Summary = "Confirm email of user account when registration", OperationId = "ConfirmEmail")]
+        [HttpGet(Router.AuthenticationRouting.ConfirmEmail)]
+        public async Task<IActionResult> ConfirmEmail([FromQuery] ConfirmEmailQuery query)
+        {
+            var response = await _mediator.Send(query);
+            return NewResult(response);
+        }
     }
 }

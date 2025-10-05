@@ -40,6 +40,9 @@ namespace SchoolManagement.Core.Features.Authentication.Commands.Handlers
                 return NotFound<JwtAuthResponse>(_stringLocalizer[SharedResourcesKeys.UserNameIsNotExists]);
 
             var result = await _signInManager.CheckPasswordSignInAsync(userByUserName, request.Password, true);
+            //Check on email confirmation
+            if (!userByUserName.EmailConfirmed)
+                return BadRequest<JwtAuthResponse>(_stringLocalizer[SharedResourcesKeys.PleaseConfirmEmail]);
 
             if (!result.Succeeded)
                 return BadRequest<JwtAuthResponse>(_stringLocalizer[SharedResourcesKeys.SignInFailed]);
