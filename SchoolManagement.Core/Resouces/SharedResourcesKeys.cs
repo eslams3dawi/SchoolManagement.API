@@ -73,9 +73,21 @@
 
         public const string EmailSentSuccessfully = "EmailSentSuccessfully";
         public const string FailedToSendEmail = "FailedToSendEmail";
+        public const string EmailNotExists = "EmailNotExists";
 
         public const string PleaseConfirmEmail = "PleaseConfirmEmail";
         public const string EmailConfirmedSuccessfully = "EmailConfirmedSuccessfully";
         public const string FailedToConfirmEmail = "FailedToConfirmEmail";
+
+        public const string SomethingWentWrongWhileUpdatingTheUser = "SomethingWentWrongWhileUpdatingTheUser";
+        public const string SomethingWentWrongWhileSendingEmail = "SomethingWentWrongWhileSendingEmail";
+        public const string PleaseTryAgain = "PleaseTryAgain";
+        public const string CodeSentSuccessfully = "CodeSentSuccessfully";
+
+        public const string ValidCode = "ValidCode";
+        public const string InValidCode = "InValidCode";
+
+        public const string ResetPasswordProcessFailedPleaseTryAgain = "ResetPasswordProcessFailedPleaseTryAgain";
+        public const string ResetPasswordSuccessfully = "ResetPasswordSuccessfully";
     }
 }

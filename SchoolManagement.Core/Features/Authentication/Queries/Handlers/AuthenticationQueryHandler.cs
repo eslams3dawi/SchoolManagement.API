@@ -9,7 +9,8 @@ namespace SchoolManagement.Core.Features.Authentication.Queries.Handlers
 {
     public class AuthenticationQueryHandler : ResponseHandler,
                                          IRequestHandler<AuthorizeUserQuery, Response<string>>,
-                                         IRequestHandler<ConfirmEmailQuery, Response<string>>
+                                         IRequestHandler<ConfirmEmailQuery, Response<string>>,
+                                         IRequestHandler<ResetPasswordQuery, Response<string>>
     {
         private readonly IAuthenticationService _authenticationService;
         private readonly IStringLocalizer<SharedResources> _stringLocalizer;
@@ -34,10 +35,25 @@ namespace SchoolManagement.Core.Features.Authentication.Queries.Handlers
         {
             var result = await _authenticationService.ConfirmEmail(request.UserId, request.Code);
 
-            if (result == "Email Confirmed")
-                return Success<string>(_stringLocalizer[SharedResourcesKeys.EmailConfirmedSuccessfully]);
+            if (result == "Failed")
+                return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.FailedToConfirmEmail]);
 
-            return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.FailedToConfirmEmail]);
+            return Success<string>(_stringLocalizer[SharedResourcesKeys.EmailConfirmedSuccessfully]);
+        }
+
+        public async Task<Response<string>> Handle(ResetPasswordQuery request, CancellationToken cancellationToken)
+        {
+            var result = await _authenticationService.ConfirmResetPasswordAsync(request.Code, request.Email);
+
+            switch (result)
+            {
+                case "User Not Found":
+                    return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.EmailNotExists]);
+                case "Not Matched":
+                    return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.InValidCode]);
+            }
+
+            return Success<string>(_stringLocalizer[SharedResourcesKeys.ValidCode]);
         }
     }
 }

@@ -12,5 +12,9 @@ namespace SchoolManagement.Service.Interfaces
         public JwtSecurityToken ReadJwtToken(string accessToken);
         public Task<(string, DateTime?)> ValidateOnDetails(JwtSecurityToken jwtToken, string accessToken, string refreshToken);
         public Task<string> ConfirmEmail(string userId, string code);
+        public Task<string> SendResetPasswordAsync(string email);
+        public Task<string> ConfirmResetPasswordAsync(string code, string email);
+        public Task<string> ResetPasswordAsync(string email, string newPassword);
+        public Task<bool> IsEmailExists(string email);
     }
 }

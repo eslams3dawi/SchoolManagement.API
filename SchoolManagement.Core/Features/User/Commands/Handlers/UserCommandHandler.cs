@@ -57,9 +57,9 @@ namespace SchoolManagement.Core.Features.User.Commands.Handlers
                 //Send email confirmation//
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(UserMapper);
                 var accessor = _accessor.HttpContext.Request;
-                var url = accessor.Scheme + "://" + accessor.Host + "/" + $"Api/V1/Authentication/Confirm-Email?UserId={UserMapper.Id}&Code={code}";
+                var url = $"To confirm you email, click on this link <a href=\"{accessor.Scheme + "://" + accessor.Host + "/" + $"Api/V1/Authentication/Confirm-Email?UserId={UserMapper.Id}&Code={code}"}\">Confirm</a> ";
 
-                var emailResult = await _emailService.SendEmailAsync(UserMapper.Email, "Email Confirmation - Please, click on this link to confirm your email", url);
+                var emailResult = await _emailService.SendEmailAsync(UserMapper.Email, "Email Confirmation", url);
                 if (emailResult != "Email Sent Successfully")
                     return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.FailedToSendEmail]);
                 //                      //
