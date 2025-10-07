@@ -18,7 +18,7 @@ namespace SchoolManagement.API.Controllers
         }
 
         [HttpPost(Router.UserRouting.Create)]
-        [SwaggerOperation(Summary = "Creates a user account and initialize his role as role by default", OperationId = "AddUser")]
+        [SwaggerOperation(Summary = "Creates a user account and initialize his role as role by default and send email confirmation code", OperationId = "AddUser")]
         public async Task<IActionResult> AddUser([FromBody] AddUserCommand command)
         {
             var result = await _mediator.Send(command);
@@ -57,12 +57,6 @@ namespace SchoolManagement.API.Controllers
             return NewResult(result);
         }
 
-        [HttpPut(Router.UserRouting.ChangePassword)]
-        [SwaggerOperation(Summary = "Changes the user's password by entering old and new password", OperationId = "ChangePassword")]
-        public async Task<IActionResult> ChangePassword([FromBody] ChangeUserPasswordCommand command)
-        {
-            var result = await _mediator.Send(command);
-            return NewResult(result);
-        }
+
     }
 }

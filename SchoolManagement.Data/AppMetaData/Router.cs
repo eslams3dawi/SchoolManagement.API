@@ -35,7 +35,6 @@
             public const string Update = Prefix + "/" + "Update";
             public const string Delete = Prefix + "/" + "Delete" + "/" + SingleRoute;
             public const string Paginated = Prefix + "/" + "Paginated";
-            public const string ChangePassword = Prefix + "/" + "Change-Password";
         }
         public static class AuthenticationRouting
         {
@@ -43,6 +42,11 @@
             public const string SignIn = Prefix + "/" + "Sign-In";
             public const string RefreshToken = Prefix + "/" + "Refresh-Token";
             public const string ValidateToken = Prefix + "/" + "Validate-Token";
+            public const string ConfirmEmail = Prefix + "/" + "Confirm-Email";
+            public const string SendResetPassword = Prefix + "/" + "Send-Reset-Password";
+            public const string ConfirmResetPassword = Prefix + "/" + "Confirm-Reset-Password";
+            public const string ResetPassword = Prefix + "/" + "Reset-Password";
+            public const string ChangePassword = Prefix + "/" + "Change-Password";
         }
         public static class AuthorizationRouting
         {
@@ -72,6 +76,12 @@
 
             public const string ManageUserClaims = ClaimPrefix + "/" + "Manage-User-Claims" + "/" + SingleRoute;
             public const string UpdateUserClaims = ClaimPrefix + "/" + "Update-User-Claims" + "/" + SingleRoute;
+        }
+        public static class EmailRouting
+        {
+            public const string Prefix = Rule + "/" + "Email";
+
+            public const string SendEmail = Prefix + "/" + "Send-Email";
         }
     }
 }

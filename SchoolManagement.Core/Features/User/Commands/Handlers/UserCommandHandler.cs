@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
@@ -7,6 +8,8 @@ using SchoolManagement.Core.Bases;
 using SchoolManagement.Core.Features.User.Commands.Models;
 using SchoolManagement.Core.Resources;
 using SchoolManagement.Data.Identity;
+using SchoolManagement.Infrastructure.Database;
+using SchoolManagement.Service.Interfaces;
 
 namespace SchoolManagement.Core.Features.User.Commands.Handlers
 {
@@ -19,31 +22,61 @@ namespace SchoolManagement.Core.Features.User.Commands.Handlers
         private readonly IStringLocalizer<SharedResources> _stringLocalizer;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IMapper _mapper;
+        private readonly IHttpContextAccessor _accessor;
+        private readonly IEmailService _emailService;
+        private readonly ApplicationDbContext _context;
 
-        public UserCommandHandler(IStringLocalizer<SharedResources> stringLocalizer, UserManager<ApplicationUser> userManager, IMapper mapper) : base(stringLocalizer)
+        public UserCommandHandler(IStringLocalizer<SharedResources> stringLocalizer, UserManager<ApplicationUser> userManager, IMapper mapper, IHttpContextAccessor accessor, IEmailService emailService, ApplicationDbContext context) : base(stringLocalizer)
         {
             _stringLocalizer = stringLocalizer;
             _userManager = userManager;
             _mapper = mapper;
+            _accessor = accessor;
+            _emailService = emailService;
+            _context = context;
         }
 
         public async Task<Response<string>> Handle(AddUserCommand request, CancellationToken cancellationToken)
         {
-            //If email exists, return error
-            var userByEmail = await _userManager.FindByEmailAsync(request.Email);
-            if (userByEmail != null)
-                return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.EmailExists]);
+            var transaction = await _context.Database.BeginTransactionAsync();
+            try
+            {
+                //Validation
+                var userByEmail = await _userManager.FindByEmailAsync(request.Email);
+                if (userByEmail != null)
+                    return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.EmailExists]);
 
-            var userByUserName = await _userManager.FindByNameAsync(request.UserName);
-            if (userByUserName != null)
-                return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.UsernameExists]);
+                var userByUserName = await _userManager.FindByNameAsync(request.UserName);
+                if (userByUserName != null)
+                    return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.UsernameExists]);
 
-            var UserMapper = _mapper.Map<ApplicationUser>(request);
-            var result = await _userManager.CreateAsync(UserMapper, request.Password);
+                //Mapping and Creating
+                var UserMapper = _mapper.Map<ApplicationUser>(request);
+                var result = await _userManager.CreateAsync(UserMapper, request.Password);
 
-            if (result.Succeeded)
-                return Created<string>();
-            return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.AddingFailed], result.Errors.Select(r => r.Description).ToList());
+                //Send email confirmation//
+                var code = await _userManager.GenerateEmailConfirmationTokenAsync(UserMapper);
+                var accessor = _accessor.HttpContext.Request;
+                var url = $"To confirm you email, click on this link <a href=\"{accessor.Scheme + "://" + accessor.Host + "/" + $"Api/V1/Authentication/Confirm-Email?UserId={UserMapper.Id}&Code={code}"}\">Confirm</a> ";
+
+                var emailResult = await _emailService.SendEmailAsync(UserMapper.Email, "Email Confirmation", url);
+                if (emailResult != "Email Sent Successfully")
+                    return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.FailedToSendEmail]);
+                //                      //
+
+                if (result.Succeeded)
+                {
+                    await transaction.CommitAsync();
+                    return Created<string>();
+                }
+
+                return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.AddingFailed], result.Errors.Select(r => r.Description).ToList());
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.AddingFailed]);
+            }
         }
 
         public async Task<Response<string>> Handle(UpdateUserCommand request, CancellationToken cancellationToken)

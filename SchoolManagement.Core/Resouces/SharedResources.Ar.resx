@@ -184,7 +184,7 @@
     <value>المستخدم موجود بالفعل</value>
   </data>
   <data name="EmailExists" xml:space="preserve">
-    <value>البريد الألكتروني موجود بالفعل</value>
+    <value>البريد الإلكتروني موجود بالفعل</value>
   </data>
   <data name="DeletingFailed" xml:space="preserve">
     <value>فشل الحذف</value>
@@ -269,5 +269,53 @@
   </data>
   <data name="SomethingWentWrongInDatabaseWhileUpdatingUserClaims" xml:space="preserve">
     <value>حدث خطأ في قاعدة البيانات أثناء تحديث مطالبات المستخدم</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>الرسالة</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="EmailSentSuccessfully" xml:space="preserve">
+    <value>تم إرسال البريد الإلكتروني بنجاح</value>
+  </data>
+  <data name="FailedToSendEmail" xml:space="preserve">
+    <value>فشل في إرسال البريد الإلكتروني</value>
+  </data>
+  <data name="PleaseConfirmEmail" xml:space="preserve">
+    <value>الرجاء تأكيد البريد الإلكتروني</value>
+  </data>
+  <data name="EmailConfirmedSuccessfully" xml:space="preserve">
+    <value>تم تأكيد البريد الإلكتروني بنجاح</value>
+  </data>
+  <data name="FailedToConfirmEmail" xml:space="preserve">
+    <value>فشل في تأكيد البريد الإلكتروني</value>
+  </data>
+  <data name="EmailNotExists" xml:space="preserve">
+    <value>البريد الإلكتروني غير موجود</value>
+  </data>
+  <data name="SomethingWentWrongWhileUpdatingTheUser" xml:space="preserve">
+    <value>حدث خطأ أثناء تحديث المستخدم</value>
+  </data>
+  <data name="SomethingWentWrongWhileSendingEmail" xml:space="preserve">
+    <value>حدث خطأ أثناء إرسال البريد الإلكتروني</value>
+  </data>
+  <data name="PleaseTryAgain" xml:space="preserve">
+    <value>يرجى المحاولة مرة أخرى</value>
+  </data>
+  <data name="CodeSentSuccessfully" xml:space="preserve">
+    <value>تم إرسال الرمز بنجاح</value>
+  </data>
+  <data name="ValidCode" xml:space="preserve">
+    <value>الرمز صحيح</value>
+  </data>
+  <data name="InValidCode" xml:space="preserve">
+    <value>الرمز غير صحيح</value>
+  </data>
+  <data name="ResetPasswordProcessFailedPleaseTryAgain" xml:space="preserve">
+    <value>فشلت عملية إعادة تعيين كلمة المرور، يرجى المحاولة مرة أخرى</value>
+  </data>
+  <data name="ResetPasswordSuccessfully" xml:space="preserve">
+    <value>تم إعادة تعيين كلمة المرور بنجاح</value>
   </data>
 </root>

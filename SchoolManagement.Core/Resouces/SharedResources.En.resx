@@ -270,4 +270,52 @@
   <data name="SomethingWentWrongInDatabaseWhileUpdatingUserClaims" xml:space="preserve">
     <value>Something Went Wrong In Database While Updating User Claims</value>
   </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailSentSuccessfully" xml:space="preserve">
+    <value>Email Sent Successfully</value>
+  </data>
+  <data name="FailedToSendEmail" xml:space="preserve">
+    <value>Failed To Send Email</value>
+  </data>
+  <data name="PleaseConfirmEmail" xml:space="preserve">
+    <value>Please Confirm Email</value>
+  </data>
+  <data name="EmailConfirmedSuccessfully" xml:space="preserve">
+    <value>Email Confirmed Successfully</value>
+  </data>
+  <data name="FailedToConfirmEmail" xml:space="preserve">
+    <value>Failed To Confirm Email</value>
+  </data>
+  <data name="EmailNotExists" xml:space="preserve">
+    <value>Email Not Exists</value>
+  </data>
+  <data name="SomethingWentWrongWhileUpdatingTheUser" xml:space="preserve">
+    <value>Something Went Wrong While Updating The User</value>
+  </data>
+  <data name="SomethingWentWrongWhileSendingEmail" xml:space="preserve">
+    <value>Something Went Wrong While Sending Email</value>
+  </data>
+  <data name="PleaseTryAgain" xml:space="preserve">
+    <value>Please Try Again</value>
+  </data>
+  <data name="CodeSentSuccessfully" xml:space="preserve">
+    <value>Code Sent Successfully</value>
+  </data>
+  <data name="ValidCode" xml:space="preserve">
+    <value>Correct Code</value>
+  </data>
+  <data name="InValidCode" xml:space="preserve">
+    <value>Wrong Code</value>
+  </data>
+  <data name="ResetPasswordProcessFailedPleaseTryAgain" xml:space="preserve">
+    <value>Reset Password Process Failed Please Try Again</value>
+  </data>
+  <data name="ResetPasswordSuccessfully" xml:space="preserve">
+    <value>Reset Password Successfully</value>
+  </data>
 </root>

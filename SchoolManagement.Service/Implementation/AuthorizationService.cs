@@ -88,15 +88,13 @@ namespace SchoolManagement.Service.Implementation
 
         public async Task<ManageUserRolesResponse> GetManageUserRolesData(ApplicationUser user)
         {
-
-            var userRoles = await _userManager.GetRolesAsync(user);
             var dbRoles = await _roleManager.Roles.ToListAsync();
             var roles = new List<Roles>();
 
             foreach (var dbRole in dbRoles)
             {
                 var roleResponse = new Roles() { Id = dbRole.Id, Name = dbRole.Name };
-                if (userRoles.Contains(dbRole.Name))
+                if (await _userManager.IsInRoleAsync(user, dbRole.Name))
                     roleResponse.HasRole = true;
 
                 roles.Add(roleResponse);

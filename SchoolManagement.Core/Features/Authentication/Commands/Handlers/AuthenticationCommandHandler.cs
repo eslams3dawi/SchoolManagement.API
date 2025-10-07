@@ -13,7 +13,9 @@ namespace SchoolManagement.Core.Features.Authentication.Commands.Handlers
 {
     public class AuthenticationQueryHandler : ResponseHandler,
                                          IRequestHandler<SignInCommand, Response<JwtAuthResponse>>,
-                                         IRequestHandler<RefreshTokenCommand, Response<JwtAuthResponse>>
+                                         IRequestHandler<RefreshTokenCommand, Response<JwtAuthResponse>>,
+                                         IRequestHandler<SendResetPasswordCommand, Response<string>>,
+                                         IRequestHandler<ResetPasswordCommand, Response<string>>
     {
         private readonly IStringLocalizer<SharedResources> _stringLocalizer;
         private readonly UserManager<ApplicationUser> _userManager;
@@ -33,6 +35,8 @@ namespace SchoolManagement.Core.Features.Authentication.Commands.Handlers
             _signInManager = signInManager;
             _authenticationService = authenticationService;
         }
+
+        //Sign In
         public async Task<Response<JwtAuthResponse>> Handle(SignInCommand request, CancellationToken cancellationToken)
         {
             var userByUserName = await _userManager.FindByNameAsync(request.UserName);
@@ -40,6 +44,10 @@ namespace SchoolManagement.Core.Features.Authentication.Commands.Handlers
                 return NotFound<JwtAuthResponse>(_stringLocalizer[SharedResourcesKeys.UserNameIsNotExists]);
 
             var result = await _signInManager.CheckPasswordSignInAsync(userByUserName, request.Password, true);
+
+            //Check on email confirmation
+            if (!userByUserName.EmailConfirmed)
+                return BadRequest<JwtAuthResponse>(_stringLocalizer[SharedResourcesKeys.PleaseConfirmEmail]);
 
             if (!result.Succeeded)
                 return BadRequest<JwtAuthResponse>(_stringLocalizer[SharedResourcesKeys.SignInFailed]);
@@ -73,6 +81,34 @@ namespace SchoolManagement.Core.Features.Authentication.Commands.Handlers
 
             var result = await _authenticationService.GetRefreshToken(jwtToken, refreshTokenExpiryDate, user, request.RefreshToken);
             return Success(result);
+        }
+
+        public async Task<Response<string>> Handle(SendResetPasswordCommand request, CancellationToken cancellationToken)
+        {
+            var result = await _authenticationService.SendResetPasswordAsync(request.Email);
+            switch (result)
+            {
+                case "Something Went Wrong While Updating The User":
+                    return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.SomethingWentWrongWhileUpdatingTheUser]);
+                case "Something Went Wrong While Sending Email":
+                    return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.SomethingWentWrongWhileSendingEmail]);
+                case "Failed":
+                    return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.PleaseTryAgain]);
+            }
+            return Success<string>(_stringLocalizer[SharedResourcesKeys.CodeSentSuccessfully]);
+        }
+
+        public async Task<Response<string>> Handle(ResetPasswordCommand request, CancellationToken cancellationToken)
+        {
+            var result = await _authenticationService.ResetPasswordAsync(request.Email, request.NewPassword);
+            switch (result)
+            {
+                case "User Not Found":
+                    return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.EmailNotExists]);
+                case "Failed":
+                    return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.ResetPasswordProcessFailedPleaseTryAgain]);
+            }
+            return Success<string>(_stringLocalizer[SharedResourcesKeys.ResetPasswordSuccessfully]);
         }
     }
 }
