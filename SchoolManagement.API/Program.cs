@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
 using SchoolManagement.Core;
+using SchoolManagement.Core.Filters;
 using SchoolManagement.Core.Middleware;
 using SchoolManagement.Data.Identity;
 using SchoolManagement.Infrastructure;
@@ -32,6 +33,8 @@ namespace SchoolManagement
                             .AddCoreDependencies()
                             .AddInfrastructureDependencies()
                             .AddServiceDependencies(builder.Configuration);
+
+            builder.Services.AddTransient<AuthenticationFilter>();
             #endregion
 
             #region Localization

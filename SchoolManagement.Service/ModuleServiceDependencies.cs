@@ -15,6 +15,7 @@ namespace SchoolManagement.Service
             services.AddTransient<IAuthenticationService, AuthenticationService>();
             services.AddTransient<IAuthorizationService, AuthorizationService>();
             services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<ICurrentUserService, CurrentUserService>();
 
             services.Configure<EmailSettings>(configuration.GetSection("emailSettings"));
 
