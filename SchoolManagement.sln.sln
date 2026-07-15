@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolManagement.Data", "Sc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolManagement.API", "SchoolManagement.API\SchoolManagement.API.csproj", "{A9A0CB81-264B-5E05-0C45-5A67043AAF6C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolManagement.XUnitTests", "SchoolManagement.XUnitTests\SchoolManagement.XUnitTests.csproj", "{06208537-9D01-44C0-B0AD-91D80C7A0500}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A9A0CB81-264B-5E05-0C45-5A67043AAF6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9A0CB81-264B-5E05-0C45-5A67043AAF6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9A0CB81-264B-5E05-0C45-5A67043AAF6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06208537-9D01-44C0-B0AD-91D80C7A0500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06208537-9D01-44C0-B0AD-91D80C7A0500}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06208537-9D01-44C0-B0AD-91D80C7A0500}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06208537-9D01-44C0-B0AD-91D80C7A0500}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
