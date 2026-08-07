@@ -4,19 +4,22 @@ using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.API.Base;
 using SchoolManagement.Core.Features.Students.Commands.Models;
 using SchoolManagement.Core.Features.Students.Queries.Models;
+using SchoolManagement.Core.Filters;
 using SchoolManagement.Data.AppMetaData;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace SchoolManagement.Controllers
 {
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class StudentsController : AppController
     {
         public StudentsController(IMediator mediator) : base(mediator)
         {
         }
 
-        [Authorize(Roles = "Admin, Instructor")]
+        [Authorize(Roles = "User")]
+        [ServiceFilter(typeof(AuthenticationFilter))]
         [HttpGet(Router.StudentRouting.List)]
         [SwaggerOperation(Summary = "Return a list of students without pagination", OperationId = "GetStudents")]
         public async Task<IActionResult> GetStudents()
